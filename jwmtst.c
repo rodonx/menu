@@ -161,7 +161,9 @@ int parsefile(const char *filename, dtentryT *rezult){
 				rezult->icon = tmpstr;	}
 			if ( (tp=strrchr(rezult->icon, '.')) != 0 ) *tp=0;	// если с расширением, то его тоже отрезать
 			continue; }
-		if ( stringsearch(str, "Exec", &(rezult->exec) ) != 0 ) continue;
+		if ( stringsearch(str, "Exec", &(rezult->exec) ) != 0 ){
+			if ( (tp=strrchr(rezult->exec, '%')) != 0 ) *tp=0;	// если %f, %F или %U, то отрезать		
+		continue;
 		stringsearch(str, "Categories", &(rezult->categories) );
 	}  // разобрали *.desktop файл
 	fclose(fp);
