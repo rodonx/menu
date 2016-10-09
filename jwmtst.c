@@ -163,7 +163,7 @@ int parsefile(const char *filename, dtentryT *rezult){
 			continue; }
 		if ( stringsearch(str, "Exec", &(rezult->exec) ) != 0 ){
 			if ( (tp=strrchr(rezult->exec, '%')) != 0 ) *tp=0;	// если %f, %F или %U, то отрезать		
-		continue;
+		continue; }
 		stringsearch(str, "Categories", &(rezult->categories) );
 	}  // разобрали *.desktop файл
 	fclose(fp);
